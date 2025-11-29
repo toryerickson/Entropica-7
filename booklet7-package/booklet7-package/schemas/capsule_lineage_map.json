@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rscs-q.org/schemas/capsule_lineage_map.json",
+  "title": "Capsule Lineage Map",
+  "description": "Schema for capsule genealogy and lineage tracking (GCP)",
+  "type": "object",
+  "required": ["tree_id", "version", "nodes", "root_ids"],
+  "properties": {
+    "tree_id": {
+      "type": "string",
+      "description": "Unique identifier for the lineage tree"
+    },
+    "version": {
+      "type": "string",
+      "default": "1.0.0",
+      "description": "Schema version"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Tree creation timestamp"
+    },
+    "root_ids": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "List of root capsule IDs (GIDs)"
+    },
+    "nodes": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/LineageNode"
+      },
+      "description": "Map of capsule_id to LineageNode"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional tree metadata"
+    }
+  },
+  "definitions": {
+    "LineageNode": {
+      "type": "object",
+      "required": ["gid", "fingerprint", "role", "generation"],
+      "properties": {
+        "gid": {
+          "type": "string",
+          "description": "Global Capsule ID"
+        },
+        "pid": {
+          "type": ["string", "null"],
+          "description": "Parent Capsule ID (null for roots)"
+        },
+        "cid": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Children Capsule IDs"
+        },
+        "fingerprint": {
+          "$ref": "#/definitions/CapsuleFingerprint"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["root", "child", "leaf", "orphan"],
+          "description": "Lineage role"
+        },
+        "generation": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Generation depth (0 = root)"
+        },
+        "inheritance_mode": {
+          "type": "string",
+          "enum": ["full", "partial", "mutated", "none"],
+          "default": "full"
+        },
+        "inherited_traits": {
+          "type": "object",
+          "additionalProperties": {"type": "number"},
+          "description": "Traits inherited from parent"
+        },
+        "check_in_interval_seconds": {
+          "type": "number",
+          "default": 30,
+          "description": "Check-in frequency in seconds"
+        },
+        "check_in_status": {
+          "type": "string",
+          "enum": ["healthy", "delayed", "missed", "anomalous", "terminated"],
+          "default": "healthy"
+        },
+        "anomaly_count": {
+          "type": "integer",
+          "default": 0
+        },
+        "anomaly_history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AnomalyRecord"
+          }
+        },
+        "escalation_flags": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Active escalation flags"
+        },
+        "is_active": {
+          "type": "boolean",
+          "default": true
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "terminated_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      }
+    },
+    "CapsuleFingerprint": {
+      "type": "object",
+      "required": ["capsule_id", "vector"],
+      "properties": {
+        "capsule_id": {"type": "string"},
+        "vector": {
+          "type": "array",
+          "items": {"type": "number"},
+          "description": "Feature vector (typically 32D)"
+        },
+        "traits": {
+          "type": "object",
+          "additionalProperties": {"type": "number"}
+        },
+        "generation": {
+          "type": "integer",
+          "default": 0
+        },
+        "hash": {
+          "type": "string",
+          "description": "SHA-256 hash of vector"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AnomalyRecord": {
+      "type": "object",
+      "properties": {
+        "timestamp": {"type": "string", "format": "date-time"},
+        "type": {"type": "string"},
+        "similarity": {"type": "number"},
+        "drift": {"type": "number"},
+        "fingerprint_hash": {"type": "string"}
+      }
+    }
+  }
+}

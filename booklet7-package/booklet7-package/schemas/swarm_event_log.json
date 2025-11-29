@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://rscs-q.org/schemas/swarm_event_log.json",
+  "title": "Swarm Event Log",
+  "description": "Schema for logging swarm lifecycle events and communications",
+  "type": "object",
+  "required": ["log_id", "version", "events"],
+  "properties": {
+    "log_id": {
+      "type": "string",
+      "description": "Unique identifier for this event log"
+    },
+    "version": {
+      "type": "string",
+      "default": "1.0.0"
+    },
+    "coordinator_id": {
+      "type": "string",
+      "description": "ID of coordinating entity"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/SwarmEvent"
+      },
+      "description": "Ordered list of swarm events"
+    },
+    "swarm_registry": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/SwarmSummary"
+      },
+      "description": "Summary of all swarms in this log"
+    }
+  },
+  "definitions": {
+    "SwarmEvent": {
+      "type": "object",
+      "required": ["event_id", "event_type", "timestamp"],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "description": "Unique event identifier"
+        },
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "swarm_spawned",
+            "swarm_terminated",
+            "member_joined",
+            "member_left",
+            "leader_elected",
+            "consensus_reached",
+            "consensus_failed",
+            "trigger_fired",
+            "message_sent",
+            "message_received",
+            "realignment_started",
+            "convergence_complete",
+            "anomaly_detected",
+            "discovery_logged"
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "swarm_id": {
+          "type": "string"
+        },
+        "actor_id": {
+          "type": "string",
+          "description": "Capsule or swarm that triggered event"
+        },
+        "payload": {
+          "type": "object",
+          "description": "Event-specific data"
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    },
+    "SwarmSummary": {
+      "type": "object",
+      "properties": {
+        "swarm_id": {"type": "string"},
+        "swarm_type": {
+          "type": "string",
+          "enum": ["verifier", "explorer", "reflector", "archivist", "synthesizer"]
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["dormant", "spawning", "active", "expanding", "realigning", "converging", "terminated"]
+        },
+        "member_count": {"type": "integer"},
+        "leader_id": {"type": ["string", "null"]},
+        "spawn_trigger": {
+          "type": "string",
+          "enum": [
+            "drift_detected",
+            "anomaly_cluster",
+            "fingerprint_deviation",
+            "rubric_divergence",
+            "lineage_break",
+            "consensus_failure",
+            "scheduled",
+            "manual"
+          ]
+        },
+        "created_at": {"type": "string", "format": "date-time"},
+        "terminated_at": {"type": ["string", "null"], "format": "date-time"},
+        "consensus_history": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConsensusRecord"
+          }
+        },
+        "discoveries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DiscoveryRecord"
+          }
+        },
+        "metrics": {
+          "$ref": "#/definitions/SwarmMetrics"
+        }
+      }
+    },
+    "ConsensusRecord": {
+      "type": "object",
+      "properties": {
+        "timestamp": {"type": "string", "format": "date-time"},
+        "topic": {"type": "string"},
+        "status": {"type": "string", "enum": ["consensus", "no_consensus", "partial"]},
+        "agreement": {"type": "number", "minimum": 0, "maximum": 1},
+        "participating_members": {"type": "integer"},
+        "centroid_hash": {"type": "string"}
+      }
+    },
+    "DiscoveryRecord": {
+      "type": "object",
+      "properties": {
+        "timestamp": {"type": "string", "format": "date-time"},
+        "discoverer_id": {"type": "string"},
+        "pattern_id": {"type": "string"},
+        "pattern_class": {
+          "type": "string",
+          "enum": ["uniform", "peaked", "positive_bias", "negative_bias", "mixed"]
+        },
+        "mds_score": {"type": "number"},
+        "novelty_score": {"type": "number"},
+        "significance_weight": {"type": "number"},
+        "confirmation_ratio": {"type": "number"},
+        "is_significant": {"type": "boolean"}
+      }
+    },
+    "SwarmMetrics": {
+      "type": "object",
+      "properties": {
+        "coherence_score": {
+          "type": "number",
+          "description": "Swarm Coherence Score (SCS)"
+        },
+        "avg_member_drift": {"type": "number"},
+        "consensus_rate": {"type": "number"},
+        "discovery_count": {"type": "integer"},
+        "message_count": {"type": "integer"},
+        "avg_response_time_ms": {"type": "number"}
+      }
+    },
+    "Message": {
+      "type": "object",
+      "required": ["message_id", "message_type", "sender_id"],
+      "properties": {
+        "message_id": {"type": "string"},
+        "message_type": {
+          "type": "string",
+          "enum": ["ping", "compare", "alert", "consensus", "broadcast", "handoff"]
+        },
+        "sender_id": {"type": "string"},
+        "recipient_ids": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Empty array = broadcast"
+        },
+        "payload": {"type": "object"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "ttl": {
+          "type": "integer",
+          "default": 10,
+          "description": "Time-to-live (hop count)"
+        },
+        "requires_ack": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}

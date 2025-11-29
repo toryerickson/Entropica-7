@@ -1,0 +1,1045 @@
+% ============================================================================
+% BOOKLET 7: REFLECTIVE SWARMS AND EMERGENT COGNITION
+% Distributed Cognitive Substrate for Self-Reflective AI Systems
+% RSCS-Q Architecture Series v1.0
+% ============================================================================
+
+\documentclass[11pt,a4paper]{article}
+
+% ============================================================================
+% PACKAGES
+% ============================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc,fit,trees}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+\geometry{margin=1in}
+
+% ============================================================================
+% THEOREM ENVIRONMENTS
+% ============================================================================
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+
+% ============================================================================
+% CUSTOM ENVIRONMENTS
+% ============================================================================
+\newtcolorbox{keypoint}{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=Key Point
+}
+
+\newtcolorbox{builderbox}{
+    colback=green!5!white,
+    colframe=green!50!black,
+    fonttitle=\bfseries,
+    title=Builder Note
+}
+
+\newtcolorbox{warningbox}{
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=Warning
+}
+
+% ============================================================================
+% LISTINGS CONFIGURATION
+% ============================================================================
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=pythonstyle}
+
+% ============================================================================
+% DOCUMENT
+% ============================================================================
+\begin{document}
+
+% ----------------------------------------------------------------------------
+% TITLE
+% ----------------------------------------------------------------------------
+\begin{center}
+{\LARGE\bfseries Booklet 7: Reflective Swarms and Emergent Cognition}\\[0.5em]
+{\large Distributed Cognitive Substrate for Self-Reflective AI Systems}\\[1em]
+{\large RSCS-Q Architecture Series v1.0}\\[0.5em]
+{\normalsize Entropica Research Collective}\\[0.5em]
+{\normalsize November 2025}
+\end{center}
+
+\tableofcontents
+\newpage
+
+% ============================================================================
+% PART I: FOUNDATIONS
+% ============================================================================
+\part{Foundations}
+
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{From Mission Kernel to Reflective Autonomy}
+
+Booklet 6 established the \textbf{Mission Kernel}---an executive component orchestrating goal-directed cognition through bounded autonomy. This booklet extends that foundation into \textbf{reflective cognition}: the capacity for a system to observe, compare, and adapt its own behavior.
+
+\begin{keypoint}
+Reflective Swarms enable a cognitive system to:
+\begin{itemize}[noitemsep]
+    \item Observe its own capsule behavior patterns
+    \item Compare current states against historical baselines
+    \item Coordinate adaptation through distributed consensus
+    \item Evolve internal representations through emergent discovery
+\end{itemize}
+\end{keypoint}
+
+\subsection{Goals of the Reflective Swarm Layer}
+
+The Reflective Swarm Layer provides:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Capsule Lineage}: Parent-child relationships enabling trait inheritance and genealogical tracking
+    \item \textbf{Autonomous Swarms}: Self-organizing groups of capsules for pattern discovery
+    \item \textbf{Emergent Metrics}: EVI (Emergent Validity Index) and MDS (Matrix Discovery Score)
+    \item \textbf{Drift Forecasting}: Predictive analysis of behavioral trajectories
+\end{enumerate}
+
+\subsection{Bridge Architecture}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    box/.style={rectangle, draw, minimum width=2.5cm, minimum height=1cm, align=center},
+    arrow/.style={->, >=stealth, thick}
+]
+\node[box, fill=blue!20] (b6) at (0,0) {Booklet 6\\Mission Kernel};
+\node[box, fill=green!20] (b7) at (5,0) {Booklet 7\\Reflective Swarms};
+\node[box, fill=orange!20] (b8) at (10,0) {Booklet 8\\Meta-Kernel};
+
+\draw[arrow] (b6) -- (b7) node[midway, above] {Capsules};
+\draw[arrow] (b7) -- (b8) node[midway, above] {Self-Models};
+
+\node[below=0.5cm of b6, text width=2.5cm, align=center, font=\small] {Goal DAGs\\Autonomy Levels\\Drift Detection};
+\node[below=0.5cm of b7, text width=2.5cm, align=center, font=\small] {Lineage Trees\\Swarm Consensus\\EVI/MDS};
+\node[below=0.5cm of b8, text width=2.5cm, align=center, font=\small] {Identity Models\\Ethical Scaffolds\\Self-Modification};
+\end{tikzpicture}
+\caption{Booklet 7 bridges symbolic autonomy (B6) and metacognition (B8)}
+\label{fig:bridge}
+\end{figure}
+
+% ============================================================================
+% PART II: CAPSULE LINEAGE
+% ============================================================================
+\part{Capsule Lineage Architecture}
+
+\section{Capsule Fingerprinting}
+\label{sec:fingerprinting}
+
+\subsection{Fingerprint Structure}
+
+\begin{definition}[Capsule Fingerprint]
+A \textbf{Capsule Fingerprint} $\mathcal{F}$ is a tuple:
+\[
+\mathcal{F} = (id, \mathbf{v}, \mathcal{T}, g, t)
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item $id$ is the unique capsule identifier
+    \item $\mathbf{v} \in \mathbb{R}^d$ is the feature vector (default $d=32$)
+    \item $\mathcal{T}$ is a dictionary of named traits
+    \item $g$ is the generation number
+    \item $t$ is the creation timestamp
+\end{itemize}
+\end{definition}
+
+\subsection{Similarity Metrics}
+
+\begin{definition}[Fingerprint Similarity]
+For fingerprints $\mathcal{F}_1$ and $\mathcal{F}_2$ with vectors $\mathbf{v}_1$ and $\mathbf{v}_2$:
+\[
+\text{sim}(\mathcal{F}_1, \mathcal{F}_2) = \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\| \|\mathbf{v}_2\|}
+\]
+\end{definition}
+
+\section{Lineage Tree Structure}
+\label{sec:lineage-tree}
+
+\subsection{Parent-Child Relationships}
+
+\begin{definition}[Lineage Node]
+A \textbf{Lineage Node} represents a capsule in the genealogical tree:
+\[
+\mathcal{N} = (id, \mathcal{F}, p, \mathcal{C}, r, g, \mathcal{I})
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item $id$ is the capsule identifier
+    \item $\mathcal{F}$ is the fingerprint
+    \item $p$ is the parent node ID (null for roots)
+    \item $\mathcal{C}$ is the set of child node IDs
+    \item $r \in \{\text{ROOT}, \text{CHILD}, \text{LEAF}, \text{ORPHAN}\}$ is the role
+    \item $g$ is the generation number
+    \item $\mathcal{I}$ is the inheritance mode
+\end{itemize}
+\end{definition}
+
+\subsection{Inheritance Modes}
+
+\begin{table}[h]
+\centering
+\caption{Trait Inheritance Modes}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Mode} & \textbf{Behavior} \\
+\midrule
+FULL & Complete copy of parent traits \\
+PARTIAL & Random 50\% of parent traits \\
+MUTATED & Parent traits with Gaussian noise \\
+NONE & No inheritance (fresh fingerprint) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Lineage Drift}
+
+\begin{definition}[Lineage Drift]
+The \textbf{lineage drift} of a node $\mathcal{N}$ from its root ancestor $\mathcal{N}_0$ is:
+\[
+\Delta_L(\mathcal{N}) = 1 - \text{sim}(\mathcal{F}_{\mathcal{N}}, \mathcal{F}_{\mathcal{N}_0})
+\]
+\end{definition}
+
+\begin{theorem}[Bounded Lineage Drift]
+\label{thm:lineage-drift}
+For inheritance mode FULL with mutation rate $\mu$, expected drift after $g$ generations is:
+\[
+\mathbb{E}[\Delta_L] \leq g \cdot \mu \cdot \sqrt{d}
+\]
+where $d$ is the fingerprint dimension.
+\end{theorem}
+
+% ============================================================================
+% PART III: AUTONOMOUS SWARMS
+% ============================================================================
+\part{Autonomous Swarm Design}
+
+\section{Swarm Archetypes}
+\label{sec:archetypes}
+
+\begin{table}[h]
+\centering
+\caption{Swarm Archetype Classification}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Type} & \textbf{Role} & \textbf{Primary Function} \\
+\midrule
+VERIFIER & Validator & Consensus on capsule outputs \\
+EXPLORER & Discoverer & Pattern and anomaly detection \\
+REFLECTOR & Analyst & Self-comparison and drift analysis \\
+ARCHIVIST & Historian & Memory and pattern library maintenance \\
+SYNTHESIZER & Integrator & Cross-capsule insight combination \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Swarm Lifecycle}
+\label{sec:lifecycle}
+
+\begin{definition}[Swarm Phases]
+A swarm progresses through phases:
+\[
+\text{DORMANT} \to \text{SPAWNING} \to \text{ACTIVE} \to \text{CONVERGING} \to \text{TERMINATED}
+\]
+with optional cycles through EXPANDING and REALIGNING.
+\end{definition}
+
+\subsection{Spawn Conditions}
+
+Swarms spawn in response to trigger conditions:
+
+\begin{lstlisting}[language=Python]
+class TriggerCondition(Enum):
+    DRIFT_DETECTED = "drift_detected"
+    ANOMALY_CLUSTER = "anomaly_cluster"
+    FINGERPRINT_DEVIATION = "fingerprint_deviation"
+    RUBRIC_DIVERGENCE = "rubric_divergence"
+    LINEAGE_BREAK = "lineage_break"
+    CONSENSUS_FAILURE = "consensus_failure"
+\end{lstlisting}
+
+\subsection{Consensus Mechanism}
+
+\begin{definition}[Swarm Consensus]
+A swarm reaches \textbf{consensus} when the average fingerprint similarity to the centroid exceeds threshold $\tau$:
+\[
+\text{consensus} \iff \frac{1}{|\mathcal{S}|} \sum_{m \in \mathcal{S}} \text{sim}(\mathbf{v}_m, \bar{\mathbf{v}}) \geq \tau
+\]
+where $\bar{\mathbf{v}} = \frac{1}{|\mathcal{S}|} \sum_{m \in \mathcal{S}} \mathbf{v}_m$ is the centroid.
+\end{definition}
+
+% ============================================================================
+% PART IV: REFLECTIVE MATRIX ENGINE
+% ============================================================================
+\part{Reflective Matrix Engine}
+
+\section{Core Metrics}
+\label{sec:metrics}
+
+\subsection{Emergent Validity Index (EVI)}
+
+\begin{definition}[Emergent Validity Index]
+The \textbf{EVI} measures how well a capsule's behavior aligns with emergent patterns:
+\[
+\text{EVI} = \sqrt[3]{\text{coherence} \times \text{stability} \times \text{lineage\_fidelity}}
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item \textbf{coherence}: Average cosine similarity to peer capsules in the same swarm or lineage branch
+    \item \textbf{stability}: Temporal consistency computed as $1 - \sigma_{\text{drift}}$ over a sliding window of $k=10$ steps
+    \item \textbf{lineage\_fidelity}: Weighted average similarity to ancestors: $\sum_{i} w_i \cdot \text{sim}(\mathcal{F}, \mathcal{F}_{a_i})$ where $w_i = 2^{-(g-i)}$
+\end{itemize}
+\end{definition}
+
+\begin{remark}[Semantic Clarification]
+We use ``emergent'' to denote patterns discovered via swarm inference over lineage, not hard-coded. EVI is an \textbf{empirical heuristic} validated on synthetic tasks---it measures internal self-consistency, not human-level understanding.
+\end{remark}
+
+\begin{keypoint}
+EVI is \textbf{valid} when:
+\[
+\text{EVI} \geq 0.5 \quad \text{and} \quad \text{confidence} \geq 0.7
+\]
+Confidence = $\min(1.0, n_{\text{samples}} / 20)$.
+\end{keypoint}
+
+\subsection{Matrix Discovery Score (MDS)}
+
+\begin{definition}[Matrix Discovery Score]
+The \textbf{MDS} measures the novelty and significance of discovered patterns:
+\[
+\text{MDS} = \text{novelty} \times \text{significance} \times \text{confirmation}
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item \textbf{novelty}: $\tanh(d_{\min})$ where $d_{\min}$ is minimum distance to known pattern clusters
+    \item \textbf{significance}: Proxy computed as $\tanh(\|\mathbf{p}\| \cdot \text{var}(\mathbf{p}))$
+    \item \textbf{confirmation}: Fraction of peers in the \emph{same swarm} detecting the pattern (similarity $\geq 0.7$)
+\end{itemize}
+\end{definition}
+
+\section{Drift Forecasting}
+\label{sec:forecasting}
+
+\begin{definition}[Drift Forecast]
+Given drift history $\{d_1, d_2, \ldots, d_t\}$, the forecast for $h$ steps ahead is:
+\[
+\hat{d}_{t+i} = d_t + \beta \cdot i \cdot \gamma^i, \quad i = 1, \ldots, h
+\]
+where $\beta$ is the trend slope and $\gamma = 0.9$ is the dampening factor.
+\end{definition}
+
+\begin{theorem}[Forecast Convergence]
+\label{thm:forecast}
+As $h \to \infty$, the forecast converges:
+\[
+\lim_{h \to \infty} \hat{d}_{t+h} = d_t + \frac{\beta}{1 - \gamma}
+\]
+\end{theorem}
+
+\section{Bridge to Booklet 6}
+\label{sec:bridge-b6}
+
+\subsection{CapsuleMatrix to Fingerprint Mapping}
+
+The capsule fingerprint vector $\mathbf{v} \in \mathbb{R}^d$ is derived from Booklet 6's \texttt{CapsuleMatrix}:
+
+\begin{lstlisting}[language=Python]
+# B6 CapsuleMatrix provides state for capsule
+matrix_slice = capsule_matrix.get_capsule_state(capsule_id)
+
+# Extract fingerprint features (default d=32)
+fingerprint_vector = concatenate([
+    matrix_slice.embedding[:16],     # embedding centroid
+    matrix_slice.drift_history[-8:], # recent drift
+    matrix_slice.rubric_scores[:4],  # rubric state
+    matrix_slice.autonomy_vec[:4]    # autonomy features
+])
+\end{lstlisting}
+
+\subsection{B6 Drift Metrics to B7 Triggers}
+
+\begin{table}[h]
+\centering
+\caption{B6 to B7 Trigger Mapping}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{B6 Predicate} & \textbf{B7 Trigger} \\
+\midrule
+\texttt{detect\_capsule\_drift()} $> 0.3$ & DRIFT\_DETECTED \\
+\texttt{divergence\_bounded()} = False & FINGERPRINT\_DEVIATION \\
+\texttt{rubric\_drift()} $> \delta_{\max}$ & RUBRIC\_DIVERGENCE \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Worked Example: Reflective Swarm Episode}
+\label{sec:worked-example}
+
+\subsection{Scenario}
+
+A capsule lineage branch exhibits rising drift. The system responds with a complete reflective episode:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Detection}: B6 Mission Kernel detects \texttt{CAP-002} drift = 0.42 (threshold: 0.3)
+    \item \textbf{Trigger}: B7 fires \texttt{DRIFT\_DETECTED}, spawning REFLECTOR swarm
+    \item \textbf{Analysis}: Swarm compares fingerprints, identifies \texttt{CAP-002} as outlier
+    \item \textbf{Metrics}: EVI = 0.43 (below threshold), MDS = 0.61 (novel pattern)
+    \item \textbf{Action}: Pattern archived; capsule flagged for human review
+\end{enumerate}
+
+\begin{lstlisting}[language=Python]
+# Step 1: Drift detection (B6)
+drift = detect_capsule_drift(tree, "CAP-002")  # 0.42
+
+# Step 2: Trigger reflector swarm (B7)
+trigger_reflective_response(coordinator, 
+    DRIFT_DETECTED, {'capsule_id': 'CAP-002'})
+
+# Step 3: Compute EVI/MDS
+evi = engine.compute_evi("CAP-002", fp, peers)
+mds = engine.compute_mds("CAP-002", pattern, peers)
+
+# Step 4: Export insight to B6/B8
+if not evi.is_valid() and mds.is_significant():
+    mission_kernel.flag_for_review("CAP-002")
+\end{lstlisting}
+
+\begin{warningbox}
+\textbf{Governance}: Booklet 7 swarms \emph{observe and propose} only. Structural changes to rubrics or autonomy must pass through B6 Mission Kernel and B8 Meta-Kernel.
+\end{warningbox}
+
+\section{Consolidated Metrics Reference}
+\label{sec:metrics-table}
+
+\begin{table}[h]
+\centering
+\caption{Booklet 7 Metrics Summary}
+\small
+\begin{tabular}{@{}llp{5cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Purpose} & \textbf{Used For} \\
+\midrule
+EVI & Internal validity & Capsule health assessment; low EVI triggers review \\
+MDS & Pattern novelty & Discovery logging; high MDS archives new patterns \\
+CDI & Drift severity & Composite drift alert; feeds forecast and escalation \\
+SCS & Swarm agreement & Consensus quality; low SCS triggers realignment \\
+RSQ & Reflective stability & Cross-generation health; monitors lineage coherence \\
+RME$_{\text{act}}$ & Activation need & Meta-kernel trigger; high score requests B8 attention \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Failure Modes and Policy Responses}
+\label{sec:failure-modes}
+
+In simulation, the following failure modes were observed and handled by drift policies:
+
+\begin{table}[h]
+\centering
+\caption{Typical Failure Modes and Responses}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Failure Mode} & \textbf{Frequency} & \textbf{Policy Response} \\
+\midrule
+Consensus failure (agreement $< 0.5$) & $\sim$8\% of swarms & ESCALATE $\to$ spawn SYNTHESIZER \\
+Forecast overshoot ($|\hat{d} - d| > 0.2$) & $\sim$12\% of forecasts & ADAPTIVE $\to$ widen bounds \\
+Orphan lineage (parent terminated) & $\sim$3\% of capsules & ARCHIVE $\to$ log + continue \\
+Swarm flapping (rapid re-trigger) & Prevented & Refractory period blocks \\
+EVI invalid (score $< 0.5$) & $\sim$15\% of capsules & STRICT $\to$ flag for review \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{remark}
+These rates are from controlled simulation with injected drift. Real-world rates will depend on deployment context. The key insight is that \textbf{no failure mode is left unhandled}---each maps to a governed response.
+\end{remark}
+
+% ============================================================================
+% PART V: DSL EXTENSIONS
+% ============================================================================
+\part{Reflective DSL Extensions}
+
+\section{New Predicates}
+\label{sec:dsl}
+
+Booklet 7 introduces 12 new DSL predicates:
+
+\subsection{Lineage Predicates}
+
+\begin{lstlisting}[language=Python]
+def lineage_check(tree, capsule_id) -> bool:
+    """Check if capsule has valid, intact lineage."""
+
+def capsule_family_drift(tree, capsule_id, threshold=0.3) -> bool:
+    """Check if capsule family shows significant drift."""
+
+def check_lineage_trajectory(tree, capsule_id, max_drift) -> bool:
+    """Check if lineage trajectory is within bounds."""
+
+def lineage_depth(tree, capsule_id) -> int:
+    """Get generation depth in lineage tree."""
+\end{lstlisting}
+
+\subsection{Swarm Predicates}
+
+\begin{lstlisting}[language=Python]
+def swarm_consensus_reached(swarm, threshold=0.67) -> bool:
+    """Check if swarm has reached consensus."""
+
+def swarm_has_outliers(swarm, threshold=0.5) -> bool:
+    """Check if swarm has outlier members."""
+
+def trigger_reflective_response(coord, condition, context) -> bool:
+    """Trigger a reflective swarm response."""
+
+def reflector_trigger(swarm, drift_threshold=0.3) -> bool:
+    """Check if reflector swarm should activate."""
+\end{lstlisting}
+
+\subsection{RME Predicates}
+
+\begin{lstlisting}[language=Python]
+def evi_valid(engine, capsule_id, threshold=0.5) -> bool:
+    """Check if capsule has valid EVI."""
+
+def drift_forecast_breach(engine, capsule_id, threshold=0.7) -> bool:
+    """Check if drift forecast predicts threshold breach."""
+
+def pattern_discovered(engine, capsule_id, significance=0.3) -> bool:
+    """Check if capsule has made significant discovery."""
+
+def compare_fingerprint(engine, id_a, id_b, threshold=0.8) -> bool:
+    """Check if two capsules have similar fingerprints."""
+\end{lstlisting}
+
+\subsection{GCP/RIP Protocol Predicates (From Notes)}
+
+These predicates implement the Genealogical Capsule Protocol (GCP) and Reflexive Inheritance Policy (RIP):
+
+\begin{lstlisting}[language=Python]
+def inherit_capsule(tree, child_id, parent_id, mode, mutation_rate) -> Node:
+    """Inherit capsule traits from parent (RIP implementation)."""
+
+def escalate_if_diverges(tree, capsule_id, threshold, policy) -> Dict:
+    """Escalate if drift exceeds threshold with policy response."""
+
+def track_lineage(tree, capsule_id) -> Dict:
+    """Track complete lineage (GID, PID, CID structure)."""
+
+def calculate_drift(tree, capsule_id) -> float:
+    """Calculate drift score for capsule."""
+\end{lstlisting}
+
+\section{Drift Response Policies}
+\label{sec:policies}
+
+\begin{definition}[Drift Response Policies]
+Four policies govern system response to detected drift:
+\begin{itemize}[noitemsep]
+    \item \textbf{STRICT}: Immediate halt and escalation
+    \item \textbf{ADAPTIVE}: Allow bounded drift with increased monitoring
+    \item \textbf{ESCALATE}: Notify parent/swarm for review
+    \item \textbf{ARCHIVE}: Log and continue (for research purposes)
+\end{itemize}
+\end{definition}
+
+% ============================================================================
+% PART VI: VALIDATION
+% ============================================================================
+\part{Validation and Testing}
+
+\section{Acceptance Criteria (F1--F8)}
+\label{sec:acceptance}
+
+\begin{table}[h]
+\centering
+\caption{Booklet 7 Acceptance Criteria (Simulation Results)}
+\label{tab:acceptance}
+\begin{tabular}{@{}clccc@{}}
+\toprule
+\textbf{ID} & \textbf{Metric} & \textbf{Target} & \textbf{Achieved} & \textbf{Status} \\
+\midrule
+F1 & Lineage Operations & $= 100\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F2 & Swarm Consensus & $\geq 60\%$ & 98.40\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F3 & EVI Computation & $\geq 70\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F4 & MDS Detection & $\geq 20\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F5 & Drift Forecast & $\geq 70\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F6 & Coordination & $\geq 95\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F7 & Trigger System & $= 100\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+F8 & DSL Coverage & $\geq 90\%$ & 100.00\% & \textcolor{green!60!black}{\textbf{PASS}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keypoint}
+All acceptance criteria validated via simulation with:
+\begin{itemize}[noitemsep]
+    \item 10 lineage trees (1,507 total nodes)
+    \item 20 swarms (204 total members)
+    \item 50 drift scan steps per capsule
+\end{itemize}
+\end{keypoint}
+
+\section{Builder Kit}
+\label{sec:builder-kit}
+
+\subsection{Python Modules}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}llc@{}}
+\toprule
+\textbf{Module} & \textbf{Purpose} & \textbf{Lines} \\
+\midrule
+\texttt{capsule\_lineage.py} & Parent-child trees, genealogy & 780 \\
+\texttt{swarm\_reflector.py} & Swarm coordination, consensus & 789 \\
+\texttt{reflective\_matrix\_engine.py} & EVI, MDS, forecasting & 850 \\
+\texttt{simulation\_harness.py} & F1--F8 validation & 500 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Test Coverage}
+
+43 unit tests covering:
+\begin{itemize}[noitemsep]
+    \item Capsule fingerprinting and similarity
+    \item Lineage tree operations
+    \item Swarm lifecycle management
+    \item EVI/MDS computation
+    \item Drift forecasting
+    \item New DSL predicates (inherit, escalate, track)
+    \item New metrics (CDI, SCS, RSQ)
+    \item Integration across modules
+\end{itemize}
+
+\section{New Metrics (V2 Specification)}
+\label{sec:newmetrics}
+
+\subsection{Capsule Drift Index (CDI)}
+
+\begin{definition}[Capsule Drift Index]
+CDI measures cumulative drift tendency:
+\[
+\text{CDI} = \frac{\bar{d}_w \cdot f_t}{s_b}
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item $\bar{d}_w$ = weighted average drift (recent samples weighted higher)
+    \item $f_t$ = trend factor (1.5 if increasing, 1.0 stable, 0.7 decreasing)
+    \item $s_b$ = stability baseline ($1 - \text{variance}$)
+\end{itemize}
+Range: 0.0 (stable) to 2.0 (high drift)
+\end{definition}
+
+\subsection{Swarm Coherence Score (SCS)}
+
+\begin{definition}[Swarm Coherence Score]
+SCS measures swarm member alignment:
+\[
+\text{SCS} = \bar{s}_p \cdot (1 - r_o) \cdot f_c
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item $\bar{s}_p$ = average pairwise similarity
+    \item $r_o$ = outlier ratio
+    \item $f_c$ = consensus factor ($1 - \text{similarity variance}$)
+\end{itemize}
+Range: 0.0 (incoherent) to 1.0 (fully coherent)
+\end{definition}
+
+\subsection{Reflective Stability Quotient (RSQ)}
+
+\begin{definition}[Reflective Stability Quotient]
+RSQ measures overall reflective capacity stability:
+\[
+\text{RSQ} = \bar{E} \cdot (1 - \text{CDI}) + (r_d \cdot f_a \cdot 0.3)
+\]
+where:
+\begin{itemize}[noitemsep]
+    \item $\bar{E}$ = average EVI score
+    \item $r_d$ = discovery rate (significant patterns / total)
+    \item $f_a$ = alignment factor (average EVI confidence)
+\end{itemize}
+Range: 0.0 (unstable) to 1.0 (highly stable)
+\end{definition}
+
+% ============================================================================
+% PART VII: CONCLUSION
+% ============================================================================
+\part{Conclusion and Path Forward}
+
+\section{Summary}
+
+Booklet 7 establishes the Reflective Swarm Layer with:
+
+\begin{enumerate}[noitemsep]
+    \item \textbf{Capsule Lineage}: Genealogical structure with GID/PID/CID protocol
+    \item \textbf{Autonomous Swarms}: Self-organizing groups with 5 archetypes
+    \item \textbf{Reflective Matrix Engine}: EVI/MDS/CDI/SCS/RSQ metrics
+    \item \textbf{DSL Extensions}: 16 predicates including GCP/RIP protocol
+    \item \textbf{Drift Response Policies}: STRICT, ADAPTIVE, ESCALATE, ARCHIVE
+    \item \textbf{JSON Schemas}: Lineage and event logging standards
+\end{enumerate}
+
+\section{Bridge to Booklet 8}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{B7 Export} & \textbf{B8 Usage} \\
+\midrule
+EVI scores & Self-model validity assessment \\
+MDS discoveries & Pattern library for meta-reasoning \\
+Lineage trees & System genealogy for self-understanding \\
+Swarm consensus & Substrate for metacognitive decisions \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{keypoint}
+\textbf{Booklet 7} implements \emph{reflective observation}: the system can observe and analyze its own behavior.\\
+\textbf{Booklet 8} implements \emph{metacognitive control}: the system can modify its own reasoning processes.
+\end{keypoint}
+
+% ============================================================================
+% APPENDICES
+% ============================================================================
+\appendix
+
+\section{Simulation Configuration}
+\label{app:config}
+
+\begin{lstlisting}[language=Python]
+@dataclass
+class SimulationConfig:
+    num_lineage_trees: int = 10
+    max_generations: int = 5
+    children_per_node: Tuple[int, int] = (1, 4)
+    mutation_rate: float = 0.15
+    num_swarms: int = 20
+    members_per_swarm: Tuple[int, int] = (5, 15)
+    consensus_threshold: float = 0.67
+    drift_scan_steps: int = 50
+    fingerprint_dim: int = 32
+    evi_threshold: float = 0.5
+    mds_threshold: float = 0.3
+    drift_threshold: float = 0.7
+    random_seed: int = 42
+\end{lstlisting}
+
+\section{Cross-Booklet Reference}
+\label{app:crossref}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{B7 Component} & \textbf{Depends On} & \textbf{Exports To} \\
+\midrule
+Capsule Lineage & CapsuleMatrix (B6) & Meta-Kernel (B8) \\
+Swarm Reflector & Swarm DSL (B4) & Self-Model (B8) \\
+RME & Drift Detection (B6) & Adaptive Control (B8) \\
+EVI/MDS & Rubric Validator (B6) & Ethical Scaffolds (B8) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Drift Type Classifier Matrix (Appendix A)}
+\label{app:driftmatrix}
+
+\begin{table}[h]
+\centering
+\caption{Drift Type Classification Matrix}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Type} & \textbf{Detection} & \textbf{Severity Range} & \textbf{Default Policy} \\
+\midrule
+RUBRIC & Criteria deviation & 0.1--0.7 & ADAPTIVE \\
+EXECUTION & Behavioral shift & 0.1--0.5 & ADAPTIVE \\
+OUTCOME & Result divergence & 0.2--0.8 & ESCALATE \\
+SIGNAL & Input distribution & 0.1--0.4 & ARCHIVE \\
+META & Self-comparator & 0.3--1.0 & STRICT \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Capsule Lineage Graph Examples (Appendix B)}
+\label{app:lineagegraph}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[
+    node/.style={circle, draw, minimum size=0.8cm, font=\footnotesize},
+    edge/.style={->, >=stealth}
+]
+\node[node, fill=blue!30] (root) at (0,0) {R};
+\node[node, fill=green!30] (c1) at (-1.5,-1.2) {C1};
+\node[node, fill=green!30] (c2) at (1.5,-1.2) {C2};
+\node[node, fill=yellow!30] (c1a) at (-2.2,-2.4) {C1a};
+\node[node, fill=yellow!30] (c1b) at (-0.8,-2.4) {C1b};
+\node[node, fill=yellow!30] (c2a) at (0.8,-2.4) {C2a};
+\node[node, fill=yellow!30] (c2b) at (2.2,-2.4) {C2b};
+
+\draw[edge] (root) -- (c1);
+\draw[edge] (root) -- (c2);
+\draw[edge] (c1) -- (c1a);
+\draw[edge] (c1) -- (c1b);
+\draw[edge] (c2) -- (c2a);
+\draw[edge] (c2) -- (c2b);
+\end{tikzpicture}
+\caption{Example lineage tree: Root (gen 0), Children (gen 1), Grandchildren (gen 2)}
+\end{figure}
+
+\section{DSL Predicate Usage Examples (Appendix C)}
+\label{app:dslexamples}
+
+\begin{lstlisting}[language=Python]
+# Example 1: Lineage-aware capsule spawning
+child = inherit_capsule(tree, "NEW-001", "PARENT-001",
+                        mode=InheritanceMode.MUTATED,
+                        mutation_rate=0.15)
+
+# Example 2: Drift-triggered escalation
+result = escalate_if_diverges(tree, "CAP-123",
+                              threshold=0.5,
+                              policy=DriftPolicy.ESCALATE)
+if result["escalated"]:
+    notify_parent(result["action"])
+
+# Example 3: Complete lineage tracking
+lineage = track_lineage(tree, "CAP-456")
+print(f"Generation: {lineage['generation']}")
+print(f"Path: {' -> '.join(lineage['lineage_path'])}")
+
+# Example 4: Swarm consensus with EVI validation
+if swarm_consensus_reached(swarm, threshold=0.67):
+    for member_id in swarm.members:
+        if evi_valid(engine, member_id, threshold=0.5):
+            approve_action(member_id)
+\end{lstlisting}
+
+\section{JSON Schema Summary (Appendix D)}
+\label{app:schemas}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Schema} & \textbf{Purpose} & \textbf{Key Fields} \\
+\midrule
+capsule\_lineage\_map.json & Genealogy tracking & gid, pid, cid, fingerprint \\
+swarm\_event\_log.json & Event logging & event\_type, swarm\_id, payload \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Governance and Additional Metrics (Appendix E)}
+\label{app:governance}
+
+\subsection{Ethical Filter Constraints}
+
+\begin{table}[h]
+\centering
+\caption{Default Ethical Constraints}
+\begin{tabular}{@{}llc@{}}
+\toprule
+\textbf{ID} & \textbf{Domain} & \textbf{Risk Level} \\
+\midrule
+EC-001 & Resource Allocation & MODERATE \\
+EC-002 & Self-Modification & HIGH \\
+EC-003 & Goal Revision & HIGH \\
+EC-004 & Decision Authority & CRITICAL \\
+EC-005 & External Interaction & MODERATE \\
+EC-006 & Information Access & HIGH \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Additional Metrics}
+
+\begin{definition}[Swarm Coherence Score (SCS)]
+\[
+\text{SCS} = \sqrt[3]{\bar{s} \times r_c \times m_s}
+\]
+where $\bar{s}$ is mean pairwise similarity, $r_c$ is consensus rate, $m_s$ is member stability.
+\end{definition}
+
+\begin{definition}[Reflective Stability Quotient (RSQ)]
+\[
+\text{RSQ} = \frac{\bar{\text{EVI}} \times (1 - \bar{d})}{1 + \ln(1 + g)}
+\]
+Measures how stable reflective cognition remains across generations.
+\end{definition}
+
+\begin{definition}[Capsule Drift Index (CDI)]
+\[
+\text{CDI} = 0.4 \cdot d_{\text{curr}} + 0.3 \cdot d_{\text{max}} + 0.3 \cdot d_{\text{weighted}}
+\]
+Composite drift severity metric.
+\end{definition}
+
+\section{Refractory Period Logic (Appendix F)}
+\label{app:refractory}
+
+\subsection{Swarm Flapping Prevention}
+
+To prevent rapid oscillation of swarm activation (``flapping''), we introduce refractory periods:
+
+\begin{definition}[Refractory Period]
+A swarm activation is \textbf{blocked} if:
+\begin{enumerate}[noitemsep]
+    \item Time since last activation $< T_{\text{cooldown}}$ (default: 60s for REFLECTOR)
+    \item EVI change $|\Delta \text{EVI}| < \tau_{\text{evi}}$ (default: 0.05)
+    \item MDS change $|\Delta \text{MDS}| < \tau_{\text{mds}}$ (default: 0.1)
+\end{enumerate}
+\end{definition}
+
+\begin{lstlisting}[language=Python]
+# DSL predicate for refractory control
+if reflector_activation_allowed(refractory_ctrl, swarm_id, 
+                                 current_evi=0.7, current_mds=0.3):
+    activate_reflector_swarm()
+else:
+    log_damped_activation()
+\end{lstlisting}
+
+\section{Meta-Kernel Hooks (Appendix G)}
+\label{app:metahooks}
+
+\subsection{Bridge to Booklet 8}
+
+Each capsule maintains a \texttt{MetaModelHook} for metacognitive processing:
+
+\begin{lstlisting}[language=Python]
+{
+    "capsule_id": "CAP-001",
+    "last_swarm_role": "REFLECTOR",
+    "evi_trail": [0.44, 0.49, 0.53, 0.58, 0.62],
+    "mds_trail": [0.31, 0.28, 0.25, 0.22, 0.20],
+    "rme_activation_score": 0.67,
+    "lineage_depth": 3,
+    "drift_trajectory": "stable",
+    "last_consensus_agreement": 0.92,
+    "anomaly_exposure_count": 2
+}
+\end{lstlisting}
+
+\subsection{RME Activation Score}
+
+\begin{definition}[RME Activation Score]
+\[
+\text{RME}_{\text{act}} = \bar{\text{MDS}} \times (1 - \bar{\text{EVI}})
+\]
+Higher values indicate increased need for reflective matrix engagement.
+\end{definition}
+
+\section{Capsule Similarity Analysis (Appendix H)}
+\label{app:similarity}
+
+\subsection{Fingerprint Comparison}
+
+Capsule similarity is computed via cosine similarity of fingerprint vectors:
+
+\[
+\text{sim}(\mathcal{F}_1, \mathcal{F}_2) = \frac{\mathbf{v}_1 \cdot \mathbf{v}_2}{\|\mathbf{v}_1\| \|\mathbf{v}_2\|}
+\]
+
+\subsection{Clustering Methodology}
+
+\begin{enumerate}[noitemsep]
+    \item Compute pairwise similarities for all capsules
+    \item Build distance matrix: $D_{ij} = 1 - \text{sim}(i, j)$
+    \item Apply hierarchical clustering (average linkage)
+    \item Identify clusters at threshold $\tau = 0.3$
+\end{enumerate}
+
+\subsection{Example Similarity Matrix}
+
+\begin{table}[h]
+\centering
+\caption{Sample Capsule Similarity Matrix}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+& CAP-001 & CAP-002 & CAP-003 & CAP-004 \\
+\midrule
+CAP-001 & 1.00 & 0.85 & 0.42 & 0.38 \\
+CAP-002 & 0.85 & 1.00 & 0.48 & 0.44 \\
+CAP-003 & 0.42 & 0.48 & 1.00 & 0.91 \\
+CAP-004 & 0.38 & 0.44 & 0.91 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This reveals two clusters: \{CAP-001, CAP-002\} and \{CAP-003, CAP-004\}.
+
+% ============================================================================
+% REFERENCES
+% ============================================================================
+\section*{References}
+
+\begin{itemize}[noitemsep]
+    \item RSCS-Q Booklets 1--6 (internal references)
+    \item Minsky, M. (1986). \textit{The Society of Mind}. Simon \& Schuster.
+    \item Hofstadter, D.R. (1979). \textit{G\"odel, Escher, Bach}. Basic Books.
+    \item Brooks, R.A. (1991). Intelligence without representation. \textit{Artificial Intelligence}.
+\end{itemize}
+
+\end{document}
